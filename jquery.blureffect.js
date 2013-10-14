@@ -1,4 +1,4 @@
-/*! jQuery Blur effect Plugin - v1.0 - 07/01/2013
+/*! jQuery Blur effect Plugin - v1.0 - 14/10/2013
 * https://github.com/stdevteam/jquery-blureffect
 * Copyright (c) 2013 STDev (http://st-dev.com); Licensed MIT */
 (function($) {
@@ -26,12 +26,18 @@
             $this.after($canvas);
             
             $this.data('blurOptions', options);
-            $this.load(function(){
+			//check when image is loaded
+            $this.one('load', function() {
                 var options = $(this).data('blurOptions'), 
                 imgId = $(this).attr('id'), canvasId = imgId+'_canvas';
                 jQuery.fn.blureffect.processor.blurImg(
                     imgId, canvasId, options.radius, options.regions, options.alpha
                 );
+            }).each(function() {
+				//if image is loaded from browser cache
+                if(this.complete){
+                    $(this).load();
+                }
             });
         });
         
@@ -39,10 +45,10 @@
         return this;
     };
     
-    //Default params for wheel
+    //Default options for blureffect
     jQuery.fn.blureffect.defaults = {
         radius: 5,//radius of blur effect
-        alpha: false,//whether to apply some trnasparency to the blur effect
+        alpha: false,//whether to apply some transparency to the blur effect
         regions: [],//array of blur region coordinates, one item is [startX, startY, width, height]
         top: '20px',//image and canvas will be absolutely positioned and need top and left in pixels
         left: '20px'//left in pixels

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Blureffect - Lightweight jQuery blur effect plugin with canvas</title>         
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css" media="screen"> 
+            body { text-align:center; background-color: #ffffff; }
+        </style>
+    </head>
+    <body>
+        <img id="demoimg" src="demo_animals.jpg" alt="" />
+        
+        <div id="delayed">
+            
+        </div>
+		
+        <script src="jquery-1.10.2.min.js"></script>
+        <script src="jquery.blureffect.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function($){
+                $('#demoimg').blureffect({
+                    radius: 50,//radius of blur effect
+                    alpha: false,//whether to apply some transparency to the blur effect
+                    regions: [
+                        {startX: 10, startY: 10, width: 200, height: 200},
+                        {startX: 500, startY: 500, width: 100, height: 100}
+                    ],//array of blur region coordinates, one item is [startX, startY, width, height]
+                    top: '20px',//image and canvas will be absolutely positioned and need top and left in pixels
+                    left: '20px'//left in pixels
+                });
+
+                setTimeout(function(){
+                    var $img = $("<img />").attr('src', 'demo_house.jpg').attr('id', 'delayed-img');
+                    $("#delayed").append($img);
+                    $img.blureffect({
+                        radius: 20,//radius of blur effect
+                        alpha: false,//whether to apply some transparency to the blur effect
+                        regions: [
+                            {startX: 10, startY: 10, width: 200, height: 200},
+                            {startX: 500, startY: 500, width: 100, height: 100}
+                        ],//array of blur region coordinates, one item is [startX, startY, width, height]
+                        top: '850px',//image and canvas will be absolutely positioned and need top and left in pixels
+                        left: '20px'//left in pixels
+                    });
+                }, 5000);
+            });
+        </script>
+   </body>
+</html>
