@@ -9,7 +9,9 @@ Requirements
 ==========
 
 jQuery 1.1 and above
+
 The img tag should have an ID attribute
+
 HTML5 doctype ```html <!DOCTYPE html> ``` (for IE)
 
 
