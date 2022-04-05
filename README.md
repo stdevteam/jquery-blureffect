@@ -1,7 +1,7 @@
 jquery-blureffect
 =================
 
-Blureffect - Lightweight jQuery blur effect plugin with canvas
+Blureffect - Lightweight jQuery blur effect plugin with canvas.
 
 
 
